@@ -2,7 +2,9 @@ import puppeteer from 'puppeteer';
 import { IOffer } from '../@types/offers';
 
 const getUnidasOffers = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
   const page = await browser.newPage();
 
   await page.goto('https://www.unidas.com.br/reserva/passo-1');
