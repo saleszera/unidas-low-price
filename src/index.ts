@@ -6,6 +6,6 @@ import path from 'path';
 dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 const interval = 1000 * 60;
-const endAt = new Date('03/03/2023').toLocaleDateString();
+const endAt = new Date('03/03/2023').toLocaleDateString('pt-BR');
 
 void app({ interval, endAt });

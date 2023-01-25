@@ -14,7 +14,7 @@ const app = async ({ interval, endAt }: IApp) => {
   }
 
   const intervalIds: NodeJS.Timer[] = [];
-  const currentDate = new Date().toLocaleDateString();
+  const currentDate = new Date().toLocaleDateString('pt-BR');
 
   const id = setInterval(async () => {
     const infos = await getUnidasOffers();
