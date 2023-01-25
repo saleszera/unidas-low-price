@@ -1,2 +1,2 @@
 export { default as getUnidasOffers } from './getUnidasOffers';
-export { default as nodemailer } from './nodemailer';
+export { default as sendMail } from './sendMail';
