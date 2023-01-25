@@ -1,33 +1,11 @@
-import { getUnidasOffers, nodemailer } from './service';
-import { htmlContent } from './utils';
+import app from './app';
 
-const app = async () => {
-  const infos = await getUnidasOffers();
+import dotenv from 'dotenv';
+import path from 'path';
 
-  const html = htmlContent({ offers: infos });
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
-  void nodemailer({
-    from: 'saleszinhow@gmail.com',
-    to: 'crowzcoleslaw@gmail.com',
-    subject: 'Ofertas unidas',
-    html,
-  });
-};
+const interval = 1000 * 60 * 60 * 6;
+const endAt = new Date('03/03/2023').toLocaleDateString();
 
-const intervalIds: NodeJS.Timer[] = [];
-const reRunInterval = 1000 * 60 * 60 * 6;
-const finalDate = new Date('03/03/2023').toLocaleDateString();
-
-const id = setInterval(() => {
-  void app();
-}, reRunInterval);
-
-intervalIds.push(id);
-
-if (intervalIds.length > 1) {
-  clearInterval(intervalIds.shift());
-} else if (new Date().toDateString() === finalDate) {
-  intervalIds.forEach((id) => {
-    clearInterval(id);
-  });
-}
+void app({ interval, endAt });
