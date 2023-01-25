@@ -10,7 +10,7 @@ const app = async ({ interval, endAt }: IApp) => {
   const validateDate = /(\d){2}(\D){1}(\d){2}(\D){1}(\d){4}/;
 
   if (!validateDate.test(endAt)) {
-    throw new Error('Invalid date');
+    throw new Error(`Invalid date: ${endAt}`);
   }
 
   const intervalIds: NodeJS.Timer[] = [];
