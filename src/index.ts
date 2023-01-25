@@ -14,4 +14,20 @@ const app = async () => {
   });
 };
 
-void app();
+const intervalIds: NodeJS.Timer[] = [];
+const reRunInterval = 1000 * 60 * 60 * 6;
+const finalDate = new Date('03/03/2023').toLocaleDateString();
+
+const id = setInterval(() => {
+  void app();
+}, reRunInterval);
+
+intervalIds.push(id);
+
+if (intervalIds.length > 1) {
+  clearInterval(intervalIds.shift());
+} else if (new Date().toDateString() === finalDate) {
+  intervalIds.forEach((id) => {
+    clearInterval(id);
+  });
+}
