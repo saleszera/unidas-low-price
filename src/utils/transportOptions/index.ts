@@ -21,7 +21,7 @@ const transportOptions = ({ env }: ITransPortOptions) => {
     },
   };
 
-  return options[env ?? 'development'];
+  return options[env];
 };
 
 export default transportOptions;

@@ -32,7 +32,8 @@ const sendMail = async (contact: ISendMail) => {
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const transporter = nodemailer.createTransport(
     transportOptions({
-      env: process.env.NODE_ENV as 'development' | 'production',
+      env:
+        (process.env.NODE_ENV as 'development' | 'production') ?? 'development',
     }) as TransportOptions | Transport<unknown>
   );
 
