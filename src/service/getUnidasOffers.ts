@@ -37,12 +37,6 @@ const getUnidasOffers = async () => {
         day: isFromStartInput ? 5 : 1,
       };
 
-      if (isFromStartInput) {
-        (
-          document.querySelector('.p-datepicker-next') as HTMLButtonElement
-        )?.click();
-      }
-
       (
         document.querySelectorAll('table')[1].children[1].children[indexes.week]
           .children[indexes.day].children[0] as HTMLSpanElement
