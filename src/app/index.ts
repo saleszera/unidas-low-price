@@ -6,7 +6,7 @@ interface IApp {
   endAt: string;
 }
 
-const app = async ({ interval, endAt }: IApp) => {
+const app = ({ interval, endAt }: IApp) => {
   const validateDate = /(\d){2}(\D){1}(\d){2}(\D){1}(\d){4}/;
 
   if (!validateDate.test(endAt)) {
